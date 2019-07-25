@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vuex</title>
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script src="../../node_modules/vuex/dist/vuex.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <counter :count="count"></counter>
+  </div>
+  </div>
+  <script>
+    // 新建一个组件
+    const counter = {
+      template: `
+        <div>{{ count }}</div>
+        `,
+     props:['count']
+    };
+    const store = new Vuex.Store({
+      state: {
+        count: 0
+      }
+    })
+    new Vue({
+      el: "#app",
+      // store,
+      data: {
+        msg: 'Vuex的使用',
+        count:15
+      },
+      components: {
+        counter
+      }
+    })
+
+  </script>
+</body>
+
+</html>

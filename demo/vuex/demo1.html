@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>vuex</title>
+  <script src="../../node_modules/vue/dist/vue.js"></script>
+  <script src="../../node_modules/vuex/dist/vuex.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <div @click="add">点击</div>
+    <counter></counter>
+  </div>
+  </div>
+  <script>
+    // 新建一个组件
+    const counter = {
+      template: `
+      <div>
+        <div>点击数量：{{ count }}</div>
+        <div>用户名：{{ name }}</div>
+        </div>
+        `,
+      computed: {
+          count(){
+              return this.$store.state.count;
+          },
+          name(){
+            return this.$store.state.name;
+          }
+        
+      }
+    };
+    // 定义全局的vuex
+    const store = new Vuex.Store({
+      state: {
+        count: 10,
+        name:"jsck"
+      },
+      mutations:{//改变状态的唯一方法
+      increment(state,num){
+          state.count = num
+      },
+      updata(state,userName){
+          state.name = userName
+      }
+
+      }
+    })
+    new Vue({
+      el: "#app",
+      store,
+      // store,
+      data: {
+        msg: 'Vuex的使用'
+      },
+      components: {
+        counter
+      },
+      methods: {
+          add(){//通过Commit提交，触发mutations的方法来改变state
+              this.$store.commit("increment",1);
+              this.$store.commit("updata","longwei");
+          }
+      },
+    })
+
+  </script>
+</body>
+
+</html>
