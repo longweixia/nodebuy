@@ -20,7 +20,7 @@
     "http-errors": "~1.6.3",
     "iview": "^3.4.2",
     "jade": "~1.11.0",
-    "mongoose": "^4.13.18",
+    "mongoose": "^4.13.21",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.2",
     "vue": "^2.2.6",
